@@ -24,7 +24,7 @@ public class CFCommandExecutor implements CommandExecutor {
 				sender.sendMessage("Use /cfstart to start a game of CraftFortress");
 				sender.sendMessage("Use /cfend to end a game of CraftFortress");
 			}
-			if(args.length>1){
+			if(args.length>0){
 				sender.sendMessage("Too many arguments!");
 			}
 			return false;
