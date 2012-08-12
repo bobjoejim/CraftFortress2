@@ -19,7 +19,7 @@ public class CFCommandExecutor implements CommandExecutor {
 			if (cmd.getName().equalsIgnoreCase("cfend")&& sender.hasPermission("cf.end")) {
 				CFEnd.endGame();
 				return true;
-			} //in future: add /cfjoin [TEAM], /cfspectate, etc.
+			} //in future: add /cfspectate, etc.
 			if(cmd.getName().equalsIgnoreCase("cfhelp")&& sender.hasPermission("cf.help")){
 				sender.sendMessage("CRAFT FORTRESS 2 HELP");
 				sender.sendMessage("Use /cfstart to force start a game of CraftFortress");
