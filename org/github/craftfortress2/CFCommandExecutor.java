@@ -20,6 +20,7 @@ public class CFCommandExecutor implements CommandExecutor {
 				//end game
 				return true;
 			} //in future: add /cfjoin [TEAM], /cfspectate, etc.
+			//we also need some way to set arena boundaries, use worldedit?
 			if(cmd.getName().equalsIgnoreCase("cfhelp")){
 				sender.sendMessage("Use /cfstart to start a game of CraftFortress");
 				sender.sendMessage("Use /cfend to end a game of CraftFortress");
