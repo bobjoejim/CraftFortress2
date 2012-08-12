@@ -7,7 +7,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		this.cf2 = cf2;
 	}
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd) {
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 			Player player = null;
 			if (sender instanceof Player) {
 				player = (Player) sender;
@@ -26,7 +26,16 @@ public class CFCommandExecutor implements CommandExecutor {
 				sender.sendMessage("Use /cfend to force end a game of CraftFortress");
 				return true;
 			}
-			if(cmd.getName().equalsIgnoreCase("cfjoin")&& args.length>1&& args.length < 3){
+			if(cmd.getName().equalsIgnoreCase("cfjoin") && args.length > 0 && args.length < 2) {
+				boolean team; //true = blu, false = red
+				saveNames(sender);
+				if (args[0] == "blue") {
+					team = true;
+				} else if (args[0] == "red") {
+					team = false;
+				} else {
+					sender.sendMessage("That's not a valid team! Valid teams are red and blue.");
+				}
 				sender.sendMessage("The game will start when the list is full");
 			}
 			if(args.length>1){
@@ -34,5 +43,11 @@ public class CFCommandExecutor implements CommandExecutor {
 				return false;
 			}
 			return false;
+		}
+		public void saveNames(CommandSender sender) {
+			int count = 0;
+			String[] names = new String[24];
+			names[count] = sender.getName();
+			count++;
 		}
 }
