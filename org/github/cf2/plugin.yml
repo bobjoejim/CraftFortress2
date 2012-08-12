@@ -1,0 +1,15 @@
+name: CraftFortress2
+main: org.github.cf2.CraftFortress2
+version: 0.1
+
+commands:
+	cfstart:
+		description: This starts the game.
+		usage: /cfstart
+		permission: cf.start
+		permission-message: You don't have permission!
+	cfend:
+		description: This ends the game.
+		usage: /cfend
+		permission: cf.end
+		permission-message: You don't have permission!
