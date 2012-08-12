@@ -13,3 +13,8 @@ commands:
 		usage: /cfend
 		permission: cf.end
 		permission-message: You don't have permission!
+	cfhelp:
+		description: This prints out help.
+		usage: /cfhelp
+		permission: cf.help
+		permission-message: You don't have permission!
