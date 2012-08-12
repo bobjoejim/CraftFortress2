@@ -7,7 +7,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		this.cf2 = cf2;
 	}
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd) {
 			Player player = null;
 			if (sender instanceof Player) {
 				player = (Player) sender;
