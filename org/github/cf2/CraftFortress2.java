@@ -1,4 +1,4 @@
-package org.github.cf2;
+package org.github.craftfortress2;
 
 import java.util.logging.Logger;
 import org.bukkit.plugin.java.*;
