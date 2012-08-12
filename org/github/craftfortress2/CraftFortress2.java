@@ -1,8 +1,6 @@
 package org.github.craftfortress2;
-
 import java.util.logging.Logger;
 import org.bukkit.plugin.java.*;
-
 public class CraftFortress2 extends JavaPlugin {
 	Logger log = Logger.getLogger("Minecraft");
 	private CFCommandExecutor myExecutor;
@@ -16,5 +14,4 @@ public class CraftFortress2 extends JavaPlugin {
 	public void onDisable() {
 		getLogger().info("CraftFortress2 has been disabled.");
 	}
-
 }
