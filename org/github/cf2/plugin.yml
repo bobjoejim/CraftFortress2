@@ -1,5 +1,5 @@
 name: CraftFortress2
-main: org.github.cf2.CraftFortress2
+main: org.github.craftfortress2.CraftFortress2
 version: 0.1
 
 commands:
