@@ -27,7 +27,7 @@ public class CFCommandExecutor implements CommandExecutor {
 				return true;
 			}
 			if(cmd.getName().equalsIgnoreCase("cfjoin") && args.length > 0 && args.length < 2) {
-				boolean team; //true = blu, false = red
+				boolean team; //true = blue, false = red
 				saveNames(sender);
 				if (args[0] == "blue") {
 					team = true;
