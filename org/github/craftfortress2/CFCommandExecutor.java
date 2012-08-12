@@ -46,7 +46,7 @@ public class CFCommandExecutor implements CommandExecutor {
 			}
 			return false;
 		}
-		public void saveNames(CommandSender sender) {
+		public void saveNames(CommandSender sender) { //saves all player's names in an array
 			names[count] = sender.getName();
 			count++;
 		}
