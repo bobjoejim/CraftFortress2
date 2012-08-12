@@ -1,4 +1,4 @@
-package org.github.cf2;
+package org.github.craftfortress2;
 
 public class CFStart {
 	public static void startGame() {
