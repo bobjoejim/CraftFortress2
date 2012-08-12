@@ -1,4 +1,4 @@
-package org.github.cf2;
+package org.github.craftfortress2;
 
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -21,7 +21,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		if (cmd.getName().equalsIgnoreCase("cfend")) {
 			//end game
 			return true;
-		}
+		} //in future: add /cfjoin [TEAM], /cfspectate, etc.
 		return false;
 	}
 }
