@@ -8,18 +8,25 @@ public class CFCommandExecutor implements CommandExecutor {
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		Player player = null;
-		if (sender instanceof Player) {
-			player = (Player) sender;
+			Player player = null;
+			if (sender instanceof Player) {
+				player = (Player) sender;
+			}
+			if (cmd.getName().equalsIgnoreCase("cfstart")) {
+				//start game
+				return true;
+			}
+			if (cmd.getName().equalsIgnoreCase("cfend")) {
+				//end game
+				return true;
+			} //in future: add /cfjoin [TEAM], /cfspectate, etc.
+			if(cmd.getName().equalsIgnoreCase("cfhelp")){
+				sender.sendMessage("Use /cfstart to start a game of CraftFortress");
+				sender.sendMessage("Use /cfend to end a game of CraftFortress");
+			}
+			if(args.length>1){
+				sender.sendMessage("Too many arguments!");
+			}
+			return false;
 		}
-		if (cmd.getName().equalsIgnoreCase("cfstart")) {
-			//start game
-			return true;
-		}
-		if (cmd.getName().equalsIgnoreCase("cfend")) {
-			//end game
-			return true;
-		} //in future: add /cfjoin [TEAM], /cfspectate, /cfclass [CLASS], etc.
-		return false;
-	}
 }
