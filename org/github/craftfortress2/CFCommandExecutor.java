@@ -19,13 +19,15 @@ public class CFCommandExecutor implements CommandExecutor {
 			if (cmd.getName().equalsIgnoreCase("cfend")) {
 				//end game
 				return true;
-			} //in future: add /cfjoin [TEAM], /cfspectate, /cfclass [CLASS], etc.
+			} //in future: add /cfjoin [TEAM], /cfspectate, etc.
 			if(cmd.getName().equalsIgnoreCase("cfhelp")){
 				sender.sendMessage("Use /cfstart to start a game of CraftFortress");
 				sender.sendMessage("Use /cfend to end a game of CraftFortress");
+				return true;
 			}
-			if(args.length>0){
+			if(args.length>1){
 				sender.sendMessage("Too many arguments!");
+				return false;
 			}
 			return false;
 		}
