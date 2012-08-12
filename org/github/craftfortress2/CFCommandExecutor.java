@@ -13,7 +13,7 @@ public class CFCommandExecutor implements CommandExecutor {
 				player = (Player) sender;
 			}
 			if (cmd.getName().equalsIgnoreCase("cfstart")) {
-				//start game
+				CFStart.startGame();
 				return true;
 			}
 			if (cmd.getName().equalsIgnoreCase("cfend")) {
