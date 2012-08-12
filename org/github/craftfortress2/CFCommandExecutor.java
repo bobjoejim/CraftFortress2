@@ -26,6 +26,9 @@ public class CFCommandExecutor implements CommandExecutor {
 				sender.sendMessage("Use /cfend to force end a game of CraftFortress");
 				return true;
 			}
+			if(cmd.getName().equalsIgnoreCase("cfjoin")&& args.length>1&& args.length < 3){
+				sender.sendMessage("The game will start when the list is full");
+			}
 			if(args.length>1){
 				sender.sendMessage("Too many arguments!");
 				return false;
