@@ -1,4 +1,4 @@
 CraftFortress2
 ==============
 
-A TF2 mod for Minecraft. Credit to Valve.
+A TF2 server mod for Minecraft. Credit to Valve and Mojang.
