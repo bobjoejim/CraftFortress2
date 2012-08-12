@@ -5,7 +5,6 @@ public class CFStart {
 		public static void startGame(){
 			Player player = null;
 			Server server = player.getServer();
-			String s = "CraftFortress2 is starting!";
-			server.broadcastMessage(s);
+			server.broadcastMessage("A new CraftFortress2 game is starting!");
 		}
 }
