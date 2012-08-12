@@ -9,6 +9,7 @@ public class CraftFortress2 extends JavaPlugin {
 		myExecutor = new CFCommandExecutor(this);
 		getCommand("cfstart").setExecutor(myExecutor);
 		getCommand("cfend").setExecutor(myExecutor);
+		getCommand("cfhelp").setExecutor(myExecutor);
 		getLogger().info("CraftFortress2 has been enabled.");
 	}
 	public void onDisable() {
