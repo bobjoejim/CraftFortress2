@@ -19,7 +19,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		if (cmd.getName().equalsIgnoreCase("cfend")) {
 			//end game
 			return true;
-		} //in future: add /cfjoin [TEAM], /cfspectate, etc.
+		} //in future: add /cfjoin [TEAM], /cfspectate, /cfclass [CLASS], etc.
 		return false;
 	}
 }
