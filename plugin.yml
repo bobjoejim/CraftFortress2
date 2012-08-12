@@ -18,3 +18,8 @@ commands:
 		usage: /cfhelp
 		permission: cf.help
 		permission-message: You don't have permission!
+	cfjoin:
+		description: Join the game.
+		usage: /cfjoin <team>
+		permission: cf.join
+		permission-message: You don't have permission!
