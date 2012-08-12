@@ -1,8 +1,6 @@
 package org.github.craftfortress2;
-
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
-
 public class CFCommandExecutor implements CommandExecutor {
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
