@@ -1,0 +1,9 @@
+name: SurvivalGames
+main: com.skitscape.survivalgames.SurvivalGames
+version: B 0.4.10
+
+commands:
+  survivalgames:
+    description: Survival Games Control
+    usage: /sg (command) (args)
+    aliases: [sg, hungergames, hg]
