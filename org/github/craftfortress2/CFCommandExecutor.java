@@ -131,4 +131,18 @@ public class CFCommandExecutor implements CommandExecutor {
 		classes.set(index, cls);
 		sender.sendMessage("Your class has been changed to " + cls);
 	}
+	public String getClass(Player player) {
+		int index = names.lastIndexOf(player.toString());
+		if (index == -1) {
+			return "Player did not join the game";
+		}
+		return classes.get(index);
+	}
+	public String getName(Player player) {
+		int index = names.lastIndexOf(player.toString());
+		if (index == -1) {
+			return "Player did not join the game";
+		}
+		return names.get(index);
+	}
 }
