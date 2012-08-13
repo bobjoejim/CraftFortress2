@@ -42,7 +42,8 @@ public class CFCommandExecutor implements CommandExecutor {
 					sender.sendMessage("/cfstart - force start a game of CraftFortress");
 					sender.sendMessage("/cfend - force end a game of CraftFortress");
 					sender.sendMessage("/cfjoin <team> <class> - join a team and class.");
-					sender.sendMessage("/cfclass - change your class.");
+					sender.sendMessage("/cfclass <class> - change your class.");
+					sender.sendMessage("/cfhelp - displays this help");
 					return true;
 				} else {
 					sender.sendMessage("You don't have permission!");
@@ -140,12 +141,8 @@ public class CFCommandExecutor implements CommandExecutor {
 		}
 		return classes.get(index);
 	}
-	public static String getName(Player player) {
-		int index = players.lastIndexOf(player);
-		if (index == -1) {
-			return "Player did not join the game";
-		}
-		return names.get(index);
+	public static String getName(Player[] player, int index) {
+		return player[index].toString();
 	}
 	public static String getTeam(Player player) {
 		int index = players.lastIndexOf(player);
