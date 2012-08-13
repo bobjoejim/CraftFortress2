@@ -35,10 +35,44 @@ public class CFCommandExecutor implements CommandExecutor {
 					return false;
 				}
 			}
-			if(cmd.getName().equalsIgnoreCase("cfscout")){
-				if(sender.hasPermission("cf.scout")){
-					if(args.length > 0 && args.length , 2){
-						sender.sendMessage("You will be a scout")
+			if(cmd.getName().equalsIgnoreCase("cfclass")){
+				if(sender.hasPermission("cf.class")){
+					if(args.length > 1 && args.length , 3){
+						if(args[0].equalsIgnoreCase"scout"){
+							//derp
+						}else if{
+							(args[0].equalsIgnoreCase"soldier"){
+								//derp
+							}else if{
+								(args[0].equalsIgnoreCase"demoman"){
+									//derp
+								}else if{
+									(args[0].equalsIgnoreCase"medic"){
+										//derp
+									}else if{
+										(args[0].equalsIgnoreCase"sniper"){
+											//derp
+										}else if{
+											(args[0].equalsIgnoreCase"spy"){
+												//derp
+											}else if{
+												(args[0].equalsIgnoreCase"heavy"){
+													//derp
+												}else if{
+													(args[0].equalsIgnoreCase"pryo"){
+														//derp
+													}else if{
+														(args[0].equalsIgnoreCase"engineer"){
+															//derp
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -57,12 +91,12 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")) {
 					if (args.length > 0 && args.length < 2) {
-						if (args[0] == "blue") {
+						if (args[0].equalsIgnoreCase"blue") {
 							saveInfo(sender, "blue");
 							sender.sendMessage("You joined team blue.");
 							sender.sendMessage("The game will start when all 24 players have joined.");
 							return true;
-						} else if (args[0] == "red") {
+						} else if (args[0].equalsIgnoreCase"red") {
 							saveInfo(sender, "red");
 							sender.sendMessage("You joined team red.");
 							sender.sendMessage("The game will start when all 24 players have joined.");
