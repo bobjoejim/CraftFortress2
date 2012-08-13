@@ -4,8 +4,8 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 public class CFCommandExecutor implements CommandExecutor {
 	int count = 0;
-	ArrayList<String> names = new ArrayList<String>();
-	ArrayList<String> teams = new ArrayList<String>();
+	static ArrayList<String> names = new ArrayList<String>();
+	static ArrayList<String> teams = new ArrayList<String>();
 	ArrayList<String> classes = new ArrayList<String>();
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
@@ -145,11 +145,12 @@ public class CFCommandExecutor implements CommandExecutor {
 		}
 		return names.get(index);
 	}
-	public String getTeam(Player player) {
+	public static String getTeam(Player player) {
 		int index = names.lastIndexOf(player.toString());
 		if (index == -1) {
 			return "Player did not join the game";
 		}
 		return teams.get(index);
 	}
+	
 }
