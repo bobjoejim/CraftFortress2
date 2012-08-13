@@ -34,6 +34,13 @@ public class CFCommandExecutor implements CommandExecutor {
 					return false;
 				}
 			}
+			if(cmd.getName().equalsIgnoreCase("cfscout")){
+				if(sender.hasPermission("cf.scout")){
+					if(args.length > 0 && args.length , 2){
+						sender.sendMessage("You will be a scout")
+					}
+				}
+			}
 			if(cmd.getName().equalsIgnoreCase("cfhelp")) {
 				if (sender.hasPermission("cf.help")) {
 					sender.sendMessage("CRAFT FORTRESS 2 HELP");
