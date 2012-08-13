@@ -20,9 +20,14 @@ commands:
 	permission-message: You don't have permission!
   cfjoin:
     description: Join the game.
-	usage: /cfjoin <team>
+	usage: /cfjoin <team> <class>
 	permission: cf.join
 	permission-message: You don't have permission!
+  cfclass:
+    description: Change class
+    usage: /cfclass <class>
+    permission: cf.class
+    permission-message: You don't have permission!
 
 permissions:
   cf.*:
@@ -32,6 +37,7 @@ permissions:
       cf.end: true
       cf.help: true
       cf.join: true
+      cf.class: true
     cf.start:
       description: Allows you to force start the game.
       default: op
@@ -43,4 +49,7 @@ permissions:
       default: true
     cf.join:
       description: Allows you to join the game.
+      default: true
+    cf.class:
+      description: Allows you to change classes.
       default: true

@@ -35,47 +35,6 @@ public class CFCommandExecutor implements CommandExecutor {
 					return false;
 				}
 			}
-			if(cmd.getName().equalsIgnoreCase("cfclass")){
-				if(sender.hasPermission("cf.class")){
-					if(args.length > 1 && args.length , 3){
-						if(args[0].equalsIgnoreCase"scout"){
-							//derp
-						}else if{
-							(args[0].equalsIgnoreCase"soldier"){
-								//derp
-							}else if{
-								(args[0].equalsIgnoreCase"demoman"){
-									//derp
-								}else if{
-									(args[0].equalsIgnoreCase"medic"){
-										//derp
-									}else if{
-										(args[0].equalsIgnoreCase"sniper"){
-											//derp
-										}else if{
-											(args[0].equalsIgnoreCase"spy"){
-												//derp
-											}else if{
-												(args[0].equalsIgnoreCase"heavy"){
-													//derp
-												}else if{
-													(args[0].equalsIgnoreCase"pryo"){
-														//derp
-													}else if{
-														(args[0].equalsIgnoreCase"engineer"){
-															//derp
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 			if(cmd.getName().equalsIgnoreCase("cfhelp")) {
 				if (sender.hasPermission("cf.help")) {
 					sender.sendMessage("CRAFT FORTRESS 2 HELP");
@@ -90,23 +49,57 @@ public class CFCommandExecutor implements CommandExecutor {
 			}
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")) {
-					if (args.length > 0 && args.length < 2) {
-						if (args[0].equalsIgnoreCase"blue") {
-							saveInfo(sender, "blue");
-							sender.sendMessage("You joined team blue.");
-							sender.sendMessage("The game will start when all 24 players have joined.");
-							return true;
-						} else if (args[0].equalsIgnoreCase"red") {
-							saveInfo(sender, "red");
-							sender.sendMessage("You joined team red.");
-							sender.sendMessage("The game will start when all 24 players have joined.");
-							return true;
-						} else {
-							sender.sendMessage("That's not a valid team! Valid teams are red and blue.");
-							return false;
-						}
-					} else {
+					if (args.length > 1 && args.length < 3) {
+						if (args[0].equalsIgnoreCase("blue")) {
+							if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
+									|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
+									|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
+								sender.sendMessage("That is not a valid class!");
+								return false;
+							} else {
+								saveInfo(sender, "blue", args[1]);
+								return true;
+							}
+						} else if (args[0].equalsIgnoreCase("red")) {
+							if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
+									|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
+									|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
+								sender.sendMessage("That is not a valid class!");
+								return false;
+							} else {
+								saveInfo(sender, "red", args[1]);
+								return true;
+							}
+					} else if (args.length > 3) {
 						sender.sendMessage("Too many arguments!");
+						return false;
+					} else if (args.length < 1) {
+						sender.sendMessage("Not enough arguments!");
+						return false;
+					}
+				} else {
+					sender.sendMessage("You don't have permission!");
+					return false;
+				}
+				return false;
+			}
+			if(cmd.getName().equalsIgnoreCase("cfclass")) {
+				if (sender.hasPermission("cf.class")) {
+					if (args.length > 0 && args.length < 2) {
+						if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
+								|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
+								|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
+							sender.sendMessage("That's not a valid class!");
+							return false;
+						} else {
+							changeClass(sender, args[1]);
+							return true;
+						}
+					} else if (args.length > 3) {
+						sender.sendMessage("Too many arguments!");
+						return false;
+					} else if (args.length < 1) {
+						sender.sendMessage("Not enough arguments!");
 						return false;
 					}
 				} else {
@@ -116,11 +109,25 @@ public class CFCommandExecutor implements CommandExecutor {
 			}
 			return false;
 		}
-	public void saveInfo(CommandSender sender, String team) { //saves player names and teams
+			return false;
+	}
+	public void saveInfo(CommandSender sender, String team, String cls) { //saves player names, teams, and classes
+		if (names.contains(sender.toString())) {
+			sender.sendMessage("You already joined the game!");
+			return;
+		}
 		names.add(sender.getName());
 		teams.add(team);
-	}
-	public void saveClasses(String cls) {
 		classes.add(cls);
+		sender.sendMessage("You joined team " + team + " as " + cls);
+	}
+	public void changeClass(CommandSender sender, String cls) { //Changes your class
+		int index = names.lastIndexOf(sender.toString());
+		if (index == -1) {
+			sender.sendMessage("You did not join the game!");
+			return;
+		}
+		classes.set(index, cls);
+		sender.sendMessage("Your class has been changed to " + cls);
 	}
 }
