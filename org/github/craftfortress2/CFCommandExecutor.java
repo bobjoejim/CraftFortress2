@@ -40,7 +40,8 @@ public class CFCommandExecutor implements CommandExecutor {
 					sender.sendMessage("CRAFT FORTRESS 2 HELP");
 					sender.sendMessage("/cfstart - force start a game of CraftFortress");
 					sender.sendMessage("/cfend - force end a game of CraftFortress");
-					sender.sendMessage("/cfjoin <team> - join a team. Choose from red or blue.");
+					sender.sendMessage("/cfjoin <team> <class> - join a team and class.");
+					sender.sendMessage("/cfclass - change your class.");
 					return true;
 				} else {
 					sender.sendMessage("You don't have permission!");
