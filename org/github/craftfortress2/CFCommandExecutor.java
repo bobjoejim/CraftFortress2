@@ -6,6 +6,7 @@ public class CFCommandExecutor implements CommandExecutor {
 	int count = 0;
 	ArrayList<String> names = new ArrayList<String>();
 	ArrayList<String> teams = new ArrayList<String>();
+	ArrayList<String> classes = new ArrayList<String>();
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
 		this.cf2 = cf2;
@@ -84,5 +85,8 @@ public class CFCommandExecutor implements CommandExecutor {
 	public void saveInfo(CommandSender sender, String team) { //saves player names and teams
 		names.add(sender.getName());
 		teams.add(team);
+	}
+	public void saveClasses(String cls) {
+		classes.add(cls);
 	}
 }
