@@ -145,4 +145,11 @@ public class CFCommandExecutor implements CommandExecutor {
 		}
 		return names.get(index);
 	}
+	public String getTeam(Player player) {
+		int index = names.lastIndexOf(player.toString());
+		if (index == -1) {
+			return "Player did not join the game";
+		}
+		return teams.get(index);
+	}
 }
