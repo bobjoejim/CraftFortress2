@@ -1,9 +1,11 @@
 package org.github.craftfortress2;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
+import java.util.ArrayList;
 public class CFCommandExecutor implements CommandExecutor {
 	int count = 0;
-	String[] names = new String[24];
+	ArrayList<String> names = new ArrayList<String>();
+	ArrayList<String> teams = new ArrayList<String>();
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
 		this.cf2 = cf2;
@@ -14,40 +16,66 @@ public class CFCommandExecutor implements CommandExecutor {
 			if (sender instanceof Player) {
 				player = (Player) sender;
 			}
-			if (cmd.getName().equalsIgnoreCase("cfstart")&& sender.hasPermission("cf.start")) {
-				CFStart.startGame();
-				return true;
-			}
-			if (cmd.getName().equalsIgnoreCase("cfend")&& sender.hasPermission("cf.end")) {
-				CFEnd.endGame();
-				return true;
-			} //in future: add /cfspectate, etc.
-			if(cmd.getName().equalsIgnoreCase("cfhelp")&& sender.hasPermission("cf.help")){
-				sender.sendMessage("CRAFT FORTRESS 2 HELP");
-				sender.sendMessage("Use /cfstart to force start a game of CraftFortress");
-				sender.sendMessage("Use /cfend to force end a game of CraftFortress");
-				return true;
-			}
-			if(cmd.getName().equalsIgnoreCase("cfjoin") && args.length > 0 && args.length < 2) {
-				boolean team; //true = blue, false = red
-				saveNames(sender);
-				if (args[0] == "blue") {
-					team = true;
-				} else if (args[0] == "red") {
-					team = false;
+			if (cmd.getName().equalsIgnoreCase("cfstart")) {
+				if (sender.hasPermission("cf.start")) {
+					CFStart.startGame();
+					return true;
 				} else {
-					sender.sendMessage("That's not a valid team! Valid teams are red and blue.");
+					sender.sendMessage("You don't have permission!");
+					return false;
 				}
-				sender.sendMessage("The game will start when the list is full");
 			}
-			if(args.length>1){
-				sender.sendMessage("Too many arguments!");
-				return false;
+			if (cmd.getName().equalsIgnoreCase("cfend")) {
+				if (sender.hasPermission("cf.end")) {
+					CFEnd.endGame();
+					return true;
+				} else {
+					sender.sendMessage("You don't have permission!");
+					return false;
+				}
+			}
+			if(cmd.getName().equalsIgnoreCase("cfhelp")) {
+				if (sender.hasPermission("cf.help")) {
+					sender.sendMessage("CRAFT FORTRESS 2 HELP");
+					sender.sendMessage("/cfstart - force start a game of CraftFortress");
+					sender.sendMessage("/cfend - force end a game of CraftFortress");
+					sender.sendMessage("/cfjoin <team> - join a team. Choose from red or blue.");
+					return true;
+				} else {
+					sender.sendMessage("You don't have permission!");
+					return false;
+				}
+			}
+			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
+				if (sender.hasPermission("cf.join")) {
+					if (args.length > 0 && args.length < 2) {
+						if (args[0] == "blue") {
+							saveInfo(sender, "blue");
+							sender.sendMessage("You joined team blue.");
+							sender.sendMessage("The game will start when all 24 players have joined.");
+							return true;
+						} else if (args[0] == "red") {
+							saveInfo(sender, "red");
+							sender.sendMessage("You joined team red.");
+							sender.sendMessage("The game will start when all 24 players have joined.");
+							return true;
+						} else {
+							sender.sendMessage("That's not a valid team! Valid teams are red and blue.");
+							return false;
+						}
+					} else {
+						sender.sendMessage("Too many arguments!");
+						return false;
+					}
+				} else {
+					sender.sendMessage("You don't have permission!");
+					return false;
+				}
 			}
 			return false;
 		}
-		public void saveNames(CommandSender sender) { //saves all player's names in an array
-			names[count] = sender.getName();
-			count++;
-		}
+	public void saveInfo(CommandSender sender, String team) { //saves player names and teams
+		names.add(sender.getName());
+		teams.add(team);
+	}
 }
