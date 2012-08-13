@@ -1,4 +1,3 @@
-package org.github.craftfortress2;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 public class CFEnd {
