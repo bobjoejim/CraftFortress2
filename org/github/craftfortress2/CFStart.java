@@ -4,10 +4,10 @@ import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 public class CFStart extends CFCommandExecutor {
+	static Player[] players = (Player[]) CFCommandExecutor.players.toArray();
 	public CFStart(CraftFortress2 cf2) {
 		super(cf2);
 	}
-	static Player[] players = (Player[]) CFCommandExecutor.players.toArray();
 		public static void startGame(){
 			Player player = null;
 			Server server = player.getServer();
