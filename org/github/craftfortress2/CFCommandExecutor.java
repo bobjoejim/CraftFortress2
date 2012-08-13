@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class CFCommandExecutor implements CommandExecutor {
 	int count = 0;
 	static ArrayList<String> names = new ArrayList<String>();
+	static ArrayList<Player> players = new ArrayList<Player>();
 	static ArrayList<String> teams = new ArrayList<String>();
-	ArrayList<String> classes = new ArrayList<String>();
+	static ArrayList<String> classes = new ArrayList<String>();
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
 		this.cf2 = cf2;
@@ -113,17 +114,18 @@ public class CFCommandExecutor implements CommandExecutor {
 			return false;
 	}
 	public void saveInfo(CommandSender sender, String team, String cls) { //saves player names, teams, and classes
-		if (names.contains(sender.toString())) {
+		if (players.contains(sender)) {
 			sender.sendMessage("You already joined the game!");
 			return;
 		}
-		names.add(sender.getName());
+		players.add((Player) sender);
+		names.add(sender.toString());
 		teams.add(team);
 		classes.add(cls);
 		sender.sendMessage("You joined team " + team + " as " + cls);
 	}
 	public void changeClass(CommandSender sender, String cls) { //Changes your class
-		int index = names.lastIndexOf(sender.toString());
+		int index = players.lastIndexOf((Player)sender);
 		if (index == -1) {
 			sender.sendMessage("You did not join the game!");
 			return;
@@ -131,22 +133,22 @@ public class CFCommandExecutor implements CommandExecutor {
 		classes.set(index, cls);
 		sender.sendMessage("Your class has been changed to " + cls);
 	}
-	public String getClass(Player player) {
-		int index = names.lastIndexOf(player.toString());
+	public static String getClass(Player player) {
+		int index = players.lastIndexOf(player);
 		if (index == -1) {
 			return "Player did not join the game";
 		}
 		return classes.get(index);
 	}
-	public String getName(Player player) {
-		int index = names.lastIndexOf(player.toString());
+	public static String getName(Player player) {
+		int index = players.lastIndexOf(player);
 		if (index == -1) {
 			return "Player did not join the game";
 		}
 		return names.get(index);
 	}
 	public static String getTeam(Player player) {
-		int index = names.lastIndexOf(player.toString());
+		int index = players.lastIndexOf(player);
 		if (index == -1) {
 			return "Player did not join the game";
 		}
