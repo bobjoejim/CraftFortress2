@@ -106,7 +106,7 @@ public class CFStart extends CFCommandExecutor {
 			}else{
 				players[17].teleport(red);
 			}
-			if(CFCommandExecutor.getTeam(players[0]) == "blue"){
+			if(CFCommandExecutor.getTeam(players[18]) == "blue"){
 				players[18].teleport(blue);
 			}else{
 				players[18].teleport(red);
