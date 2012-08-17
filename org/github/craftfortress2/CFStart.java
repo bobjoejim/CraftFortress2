@@ -13,13 +13,14 @@ public class CFStart extends CFCommandExecutor {
 			Server server = player.getServer();
 			server.broadcastMessage("Craft Fortress 2 is starting!");
 			Server svr = player.getServer();
-			World dustbowl = svr.getWorld("Dustbowl");
+			World dustbowl = svr.getWorld("AT_Dustbowl");
 			Location blue = new Location(dustbowl, 1, 90, 1);
 			Location red = new Location(dustbowl, 2, 90, 2);
 			for (int i=0;i<players.length;i++)	{
 				if (CFCommandExecutor.getTeam(players[i]) == "blue") {
 					players[i].teleport(blue);
-				}
+				}else{
+					players[i].teleport(red);
 			}
 	}
 }
