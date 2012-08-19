@@ -22,5 +22,33 @@ public class CFStart extends CFCommandExecutor {
 				}else{
 					players[i].teleport(red);
 			}
+				if(CFCommandExecutor.getClass(players[i]) == "scout"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "soldier"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "demoman"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "heavy"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "medic"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "engineer"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "spy"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "pyro"){
+					
+				}
+				if(CFCommandExecutor.getClass(players[i]) == "sniper"){
+					
+				}
+		}
 	}
 }
