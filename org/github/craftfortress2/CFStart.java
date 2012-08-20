@@ -1,4 +1,5 @@
 package org.github.craftfortress2;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -8,19 +9,20 @@ public class CFStart extends CFCommandExecutor {
 		super(cf2);
 	}
 	static Player[] players = (Player[]) CFCommandExecutor.players.toArray();
-		public static void startGame(){
-			Player player = null;
-			Server server = player.getServer();
-			server.broadcastMessage("Craft Fortress 2 is starting!");
-			Server svr = player.getServer();
-			World ctftwofort = svr.getWorld("ctf_2fort");
-			Location blue = new Location(ctftwofort, 1, 90, 1);
-			Location red = new Location(ctftwofort, 2, 90, 2);
-			for (int i=0;i<players.length;i++)	{
-				if (CFCommandExecutor.getTeam(players[i]).equals("blue")) {
-					players[i].teleport(blue);
-				}else{
-					players[i].teleport(red);
+	public static void startGame(){
+		Player player = null;
+		Server server = player.getServer();
+		server.broadcastMessage("Craft Fortress 2 is starting!");
+		Server svr = player.getServer();
+		World dustbowl = svr.getWorld("AT_Dustbowl");
+		Location blue = new Location(dustbowl, 1, 90, 1);
+		Location red = new Location(dustbowl, 2, 90, 2);
+		for (int i=0;i<players.length;i++)	{
+			players[i].setGameMode(GameMode.ADVENTURE);
+			if (CFCommandExecutor.getTeam(players[i]).equals("blue")) {
+				players[i].teleport(blue);
+			}else{
+				players[i].teleport(red);
 			}
 			if(CFCommandExecutor.getClass(players[i]).equals("scout")){
 
