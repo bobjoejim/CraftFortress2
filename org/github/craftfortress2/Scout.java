@@ -11,7 +11,7 @@ public class Scout extends CFClasses {
 		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
 		inv.setHelmet(new ItemStack(Material.IRON_HELMET, 1));
 		inv.setBoots(new ItemStack(Material.IRON_BOOTS, 1));
-		inv.setItem(36, new ItemStack(Material.STICK, 1));
+		inv.setItem(38, new ItemStack(Material.STICK, 1));
 	}
 
 }
