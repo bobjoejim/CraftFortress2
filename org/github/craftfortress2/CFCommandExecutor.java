@@ -1,4 +1,5 @@
 package org.github.craftfortress2;
+import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class CFCommandExecutor implements CommandExecutor {
 					CFStart.startGame();
 					return true;
 				} else {
-					sender.sendMessage("You don't have permission!");
+					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
 				}
 			}
@@ -32,21 +33,21 @@ public class CFCommandExecutor implements CommandExecutor {
 					CFEnd.endGame();
 					return true;
 				} else {
-					sender.sendMessage("You don't have permission!");
+					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
 				}
 			}
 			if(cmd.getName().equalsIgnoreCase("cfhelp")) {
 				if (sender.hasPermission("cf.help")) {
-					sender.sendMessage("CRAFT FORTRESS 2 HELP");
-					sender.sendMessage("/cfstart - force start a game of CraftFortress");
-					sender.sendMessage("/cfend - force end a game of CraftFortress");
-					sender.sendMessage("/cfjoin <team> <class> - join a team and class.");
-					sender.sendMessage("/cfclass <class> - change your class.");
-					sender.sendMessage("/cfhelp - displays this help");
+					sender.sendMessage(ChatColor.GREEN+"CRAFT FORTRESS 2 HELP");
+					sender.sendMessage(ChatColor.GREEN+"/cfstart - force start a game of CraftFortress");
+					sender.sendMessage(ChatColor.GREEN+"/cfend - force end a game of CraftFortress");
+					sender.sendMessage(ChatColor.GREEN+"/cfjoin <team> <class> - join a team and class.");
+					sender.sendMessage(ChatColor.GREEN+"/cfclass <class> - change your class.");
+					sender.sendMessage(ChatColor.GREEN+"/cfhelp - displays this help");
 					return true;
 				} else {
-					sender.sendMessage("You don't have permission!");
+					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
 				}
 			}
@@ -57,7 +58,7 @@ public class CFCommandExecutor implements CommandExecutor {
 							if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
 									|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
 									|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
-								sender.sendMessage("That is not a valid class!");
+								sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 								return false;
 							} else {
 								saveInfo(sender, "blue", args[1]);
@@ -67,21 +68,21 @@ public class CFCommandExecutor implements CommandExecutor {
 							if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
 									|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
 									|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
-								sender.sendMessage("That is not a valid class!");
+								sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 								return false;
 							} else {
 								saveInfo(sender, "red", args[1]);
 								return true;
 							}
 					} else if (args.length > 3) {
-						sender.sendMessage("Too many arguments!");
+						sender.sendMessage(ChatColor.RED+"Too many arguments!");
 						return false;
 					} else if (args.length < 1) {
-						sender.sendMessage("Not enough arguments!");
+						sender.sendMessage(ChatColor.RED+"Not enough arguments!");
 						return false;
 					}
 				} else {
-					sender.sendMessage("You don't have permission!");
+					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
 				}
 				return false;
@@ -92,21 +93,21 @@ public class CFCommandExecutor implements CommandExecutor {
 						if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
 								|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
 								|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
-							sender.sendMessage("That's not a valid class!");
+							sender.sendMessage(ChatColor.RED+"That's not a valid class!");
 							return false;
 						} else {
 							changeClass(sender, args[1]);
 							return true;
 						}
 					} else if (args.length > 3) {
-						sender.sendMessage("Too many arguments!");
+						sender.sendMessage(ChatColor.RED+"Too many arguments!");
 						return false;
 					} else if (args.length < 1) {
-						sender.sendMessage("Not enough arguments!");
+						sender.sendMessage(ChatColor.RED+"Not enough arguments!");
 						return false;
 					}
 				} else {
-					sender.sendMessage("You don't have permission!");
+					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
 				}
 			}
@@ -116,23 +117,23 @@ public class CFCommandExecutor implements CommandExecutor {
 	}
 	public void saveInfo(CommandSender sender, String team, String cls) { //saves player names, teams, and classes
 		if (players.contains(sender)) {
-			sender.sendMessage("You already joined the game!");
+			sender.sendMessage(ChatColor.RED+"You already joined the game!");
 			return;
 		}
 		players.add((Player) sender);
 		names.add(sender.toString());
 		teams.add(team);
 		classes.add(cls);
-		sender.sendMessage("You joined team " + team + " as " + cls);
+		sender.sendMessage(ChatColor.GREEN+"You joined team " + team + " as " + cls);
 	}
 	public void changeClass(CommandSender sender, String cls) { //Changes your class
 		int index = players.lastIndexOf((Player)sender);
 		if (index == -1) {
-			sender.sendMessage("You did not join the game!");
+			sender.sendMessage(ChatColor.RED+"You did not join the game!");
 			return;
 		}
 		classes.set(index, cls);
-		sender.sendMessage("Your class has been changed to " + cls);
+		sender.sendMessage(ChatColor.GREEN+"Your class has been changed to " + cls);
 	}
 	public static String getClass(Player player) {
 		int index = players.lastIndexOf(player);
