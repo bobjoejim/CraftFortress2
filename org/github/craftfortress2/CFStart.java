@@ -25,7 +25,7 @@ public class CFStart extends CFCommandExecutor {
 				players[i].teleport(red);
 			}
 			if(CFCommandExecutor.getClass(players[i]).equals("scout")){
-
+				Scout.init();
 			}
 			if(CFCommandExecutor.getClass(players[i]).equals("soldier")){
 
