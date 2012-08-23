@@ -5,24 +5,24 @@ version: 0.01
 commands:
   cfstart:
     description: Force starts the game.
-	usage: /cfstart
-	permission: cf.start
-	permission-message: You don't have permission!
+    usage: /cfstart
+    permission: cf.start
+    permission-message: You don't have permission!
   cfend:
-	description: Force ends the game.
-	usage: /cfend
-	permission: cf.end
-	permission-message: You don't have permission!
+    description: Force ends the game.
+    usage: /cfend
+    permission: cf.end
+    permission-message: You don't have permission!
   cfhelp:
-	description: Prints out help.
-	usage: /cfhelp
-	permission: cf.help
-	permission-message: You don't have permission!
+    description: Prints out help.
+    usage: /cfhelp
+    permission: cf.help
+    permission-message: You don't have permission!
   cfjoin:
     description: Join the game.
-	usage: /cfjoin <team> <class>
-	permission: cf.join
-	permission-message: You don't have permission!
+    usage: /cfjoin <team> <class>
+    permission: cf.join
+    permission-message: You don't have permission!
   cfclass:
     description: Change class
     usage: /cfclass <class>
