@@ -13,9 +13,6 @@ public class CFEnd extends CFCommandExecutor{
 	}
 	public static void reset(){
 		for (int i=0; i<CFStart.saveGM.size();i++){
-			if (players.get(i).toString().equals("ultimatepig")){
-				players.get(i).kickPlayer("The Ban Hammer has spoken!");
-			}
 			players.get(i).setGameMode(CFStart.saveGM.get(i));
 			CFClasses.loadInv(players.get(i));
 		}
