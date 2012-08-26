@@ -4,5 +4,3 @@ CraftFortress2
 A TF2 server mod for Minecraft. Credit to Valve and Mojang.
 
 DISCLAIMER: SG Source IS NOT OUR CODE. All credits go to the SurvivalGames team for making this plugin.
-
-DISCLAIMER 2: NoRegen IS NOT OUR CODE. All credits go to Turqmelon, the creator of NoRegen, for the code.
