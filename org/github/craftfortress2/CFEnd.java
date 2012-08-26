@@ -16,6 +16,11 @@ public class CFEnd extends CFCommandExecutor{
 		teams.clear();
 		classes.clear();
 		names.clear();
+		for (int i=0; i<CFStart.saveGM.size();i++){
+			players.get(i).setGameMode(CFStart.saveGM.get(i));
+			CFClasses.loadInv(players.get(i));
+		}
+		CFStart.saveGM.clear();
 	}
 	
 }
