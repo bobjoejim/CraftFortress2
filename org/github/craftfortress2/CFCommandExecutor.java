@@ -68,10 +68,10 @@ public class CFCommandExecutor implements CommandExecutor {
 								saveInfo(sender, "red", args[1]);
 								return true;
 							} 							
-					} else if (args.length > 2 ) {
+					} else if (args.length > 3 ) {
 						sender.sendMessage(ChatColor.RED+"Too many arguments!");
 						return false;
-					} else if (args.length < 2) {
+					} else if (args.length < 1) {
 						sender.sendMessage(ChatColor.RED+"Not enough arguments!");
 						return false;
 					} 
@@ -82,7 +82,9 @@ public class CFCommandExecutor implements CommandExecutor {
 				} else if(!sender.hasPermission("cf.join")){
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
-				}else {
+				}else if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
+						|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
+						|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
 					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
@@ -107,7 +109,9 @@ public class CFCommandExecutor implements CommandExecutor {
 				} else if(!sender.hasPermission("cf.class")){
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
-				}else {
+				}else if (!args[0].equalsIgnoreCase("scout") || !args[0].equalsIgnoreCase("soldier") || !args[0].equalsIgnoreCase("pyro") || !args[0].equalsIgnoreCase("demoman")
+						|| !args[0].equalsIgnoreCase("heavy") || !args[0].equalsIgnoreCase("engineer") || !args[0].equalsIgnoreCase("sniper")
+						|| !args[0].equalsIgnoreCase("medic") || !args[0].equalsIgnoreCase("spy")) {
 					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
