@@ -4,8 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.*;
 import org.bukkit.inventory.*;
 public class Scout extends CFClasses {
-	public static void init(){
-		Player player = null;
+	public static void init(Player player){
 		PlayerInventory inv = player.getInventory();
 		player.setFoodLevel(17);
 		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
