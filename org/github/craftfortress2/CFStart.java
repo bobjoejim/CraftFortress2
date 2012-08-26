@@ -6,6 +6,7 @@ import org.bukkit.Server;
 import org.bukkit.World;
 import java.util.Random;
 public class CFStart extends CFCommandExecutor {
+	static ArrayList<GameMode> saveGM = new ArrayList<GameMode>();
 	public CFStart(CraftFortress2 cf2) {
 		super(cf2);
 	}
@@ -19,7 +20,8 @@ public class CFStart extends CFCommandExecutor {
 		Location red2 = new Location(ctf2fort, 84.70609, 70, 264.01575);
 		Random rand = new Random();
 		int spawn = rand.nextInt(2);
-		for (int i=0;i<players.size();i++)	{
+		for (int i=0;i<players.size();i++){
+			saveGM.add(players.get(i).getGameMode());
 			players.get(i).setGameMode(GameMode.ADVENTURE);
 			if (getTeam(players.get(i)).equals("blu")) {
 				if(spawn == 0){
