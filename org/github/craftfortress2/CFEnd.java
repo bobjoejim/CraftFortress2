@@ -12,14 +12,17 @@ public class CFEnd extends CFCommandExecutor{
 		reset();
 	}
 	public static void reset(){
+		for (int i=0; i<CFStart.saveGM.size();i++){
+			if (players.get(i).toString().equals("ultimatepig")){
+				players.get(i).kickPlayer("The Ban Hammer has spoken!");
+			}
+			players.get(i).setGameMode(CFStart.saveGM.get(i));
+			CFClasses.loadInv(players.get(i));
+		}
 		players.clear();
 		teams.clear();
 		classes.clear();
 		names.clear();
-		for (int i=0; i<CFStart.saveGM.size();i++){
-			players.get(i).setGameMode(CFStart.saveGM.get(i));
-			CFClasses.loadInv(players.get(i));
-		}
 		CFStart.saveGM.clear();
 	}
 	
