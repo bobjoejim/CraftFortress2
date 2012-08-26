@@ -4,17 +4,12 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
-import java.util.ArrayList;
 import java.util.Random;
 public class CFStart extends CFCommandExecutor {
 	public CFStart(CraftFortress2 cf2) {
 		super(cf2);
 	}
 	public static void startGame(){
-		//Player[] players = (Player[]) CFCommandExecutor.players.toArray();
-		ArrayList<Player> players = CFCommandExecutor.players;
-		//Server server = player.getServer();
 		Server server = Bukkit.getServer();
 		server.broadcastMessage("Craft Fortress 2 is starting!");
 		World ctf2fort = server.getWorld("ctf_2fort");
@@ -26,45 +21,39 @@ public class CFStart extends CFCommandExecutor {
 		int spawn = rand.nextInt(2);
 		for (int i=0;i<players.size();i++)	{
 			players.get(i).setGameMode(GameMode.ADVENTURE);
-			if (CFCommandExecutor.getTeam(players.get(i)).equals("blu")) {
+			if (getTeam(players.get(i)).equals("blu")) {
 				if(spawn == 0){
 					players.get(i).teleport(blu1);
 				}else{
 					players.get(i).teleport(blu2);
 				}
-			}else if(CFCommandExecutor.getTeam(players.get(i)).equals("red")){
+			}else if(getTeam(players.get(i)).equals("red")){
 				if(spawn == 0){
 					players.get(i).teleport(red1);
 				}else{
 					players.get(i).teleport(red2);
 				}
 			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("scout")){
-				Scout.init();
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("soldier")){
+			if(getClass(players.get(i)).equals("scout")){
+				Scout.init(players.get(i));
+			}else if(getClass(players.get(i)).equals("soldier")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("demoman")){
+			}else if(getClass(players.get(i)).equals("demoman")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("heavy")){
+			}else if(getClass(players.get(i)).equals("heavy")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("medic")){
+			}else if(getClass(players.get(i)).equals("medic")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("engineer")){
+			}else if(getClass(players.get(i)).equals("engineer")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("spy")){
+			}else if(getClass(players.get(i)).equals("spy")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("pyro")){
+			}else if(getClass(players.get(i)).equals("pyro")){
 
-			}
-			if(CFCommandExecutor.getClass(players.get(i)).equals("sniper")){
+			}else if(getClass(players.get(i)).equals("sniper")){
 
+			}else{
+				players.get(i).sendMessage("LOL SOMETHING FAILED. SORRY!");
 			}
 		}
 	}
