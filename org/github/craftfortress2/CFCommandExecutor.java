@@ -54,11 +54,11 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")) {
 					if (args.length > 1 && args.length < 3) {
-						if (args[0].equalsIgnoreCase("blue")) {
+						if (args[0].equalsIgnoreCase("blu")) {
 							if (args[1].equalsIgnoreCase("scout") || args[1].equalsIgnoreCase("soldier") || args[1].equalsIgnoreCase("pyro") || args[1].equalsIgnoreCase("demoman")
 									|| args[1].equalsIgnoreCase("heavy") || args[1].equalsIgnoreCase("engineer") || args[1].equalsIgnoreCase("sniper")
 									|| args[1].equalsIgnoreCase("medic") || args[1].equalsIgnoreCase("spy")) {
-								saveInfo(sender, "blue", args[1]);
+								saveInfo(sender, "blu", args[1]);
 								return true;
 							} 
 						} else if (args[0].equalsIgnoreCase("red")) {
@@ -74,13 +74,16 @@ public class CFCommandExecutor implements CommandExecutor {
 					} else if (args.length < 2) {
 						sender.sendMessage(ChatColor.RED+"Not enough arguments!");
 						return false;
-					} else if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
-							|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
-							|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
-						sender.sendMessage(ChatColor.RED+"That is not a valid class!");
+					} 
+					else if(!args[0].equalsIgnoreCase("blu") || !args[0].equalsIgnoreCase("red")){
+						sender.sendMessage(ChatColor.RED+("That is not a valid team!"));
+						return false;
 					}
-				} else {
+				} else if(!sender.hasPermission("cf.join")){
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
+					return false;
+				}else {
+					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
 				return false;
@@ -88,15 +91,12 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfclass")) {
 				if (sender.hasPermission("cf.class")) {
 					if (args.length > 0 && args.length < 2) {
-						if (!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
-								|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
-								|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
-							sender.sendMessage(ChatColor.RED+"That's not a valid class!");
-							return false;
-						} else {
+						if (args[1].equalsIgnoreCase("scout") || args[1].equalsIgnoreCase("soldier") || args[1].equalsIgnoreCase("pyro") || args[1].equalsIgnoreCase("demoman")
+								|| args[1].equalsIgnoreCase("heavy") || args[1].equalsIgnoreCase("engineer") || args[1].equalsIgnoreCase("sniper")
+								|| args[1].equalsIgnoreCase("medic") || args[1].equalsIgnoreCase("spy")) {
 							changeClass(sender, args[1]);
-							return true;
-						}
+							return false;
+						} 
 					} else if (args.length > 3) {
 						sender.sendMessage(ChatColor.RED+"Too many arguments!");
 						return false;
@@ -104,8 +104,11 @@ public class CFCommandExecutor implements CommandExecutor {
 						sender.sendMessage(ChatColor.RED+"Not enough arguments!");
 						return false;
 					}
-				} else {
+				} else if(!sender.hasPermission("cf.class")){
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
+					return false;
+				}else {
+					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
 			}
@@ -136,17 +139,17 @@ public class CFCommandExecutor implements CommandExecutor {
 	public static String getClass(Player player) {
 		int index = players.lastIndexOf(player);
 		if (index == -1) {
-			return "-1";
+			return "Player did not join the game";
 		}
 		return classes.get(index);
 	}
-	public static String getName(Player[] player, int index) { // This is really bad. :O
+	public static String getName(Player[] player, int index) {
 		return player[index].toString();
 	}
 	public static String getTeam(Player player) {
 		int index = players.lastIndexOf(player);
 		if (index == -1) {
-			return "-1";
+			return "Player did not join the game";
 		}
 		return teams.get(index);
 	}
