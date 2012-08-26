@@ -139,17 +139,17 @@ public class CFCommandExecutor implements CommandExecutor {
 	public static String getClass(Player player) {
 		int index = players.lastIndexOf(player);
 		if (index == -1) {
-			return "Player did not join the game";
+			return "-1";
 		}
 		return classes.get(index);
 	}
-	public static String getName(Player[] player, int index) {
+	public static String getName(Player[] player, int index) { // This is kinda useless. :O
 		return player[index].toString();
 	}
 	public static String getTeam(Player player) {
 		int index = players.lastIndexOf(player);
 		if (index == -1) {
-			return "Player did not join the game";
+			return "-1";
 		}
 		return teams.get(index);
 	}
