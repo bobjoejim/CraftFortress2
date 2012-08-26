@@ -1,14 +1,13 @@
 package org.github.craftfortress2;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-public class CFClasses {
+public class CFClasses implements Listener{
 	@EventHandler
 	public void onFoodBarLower(FoodLevelChangeEvent event){
-			if(event.getEntity()instanceof Player){
-				Player player = (Player)event.getEntity();
+			Player player = ((Player) event).getPlayer();
 				player.setExhaustion(0);
 				player.setFoodLevel(17);
 			}
-		}
 	}
