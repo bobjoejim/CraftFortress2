@@ -23,6 +23,8 @@ public class CFEnd extends CFCommandExecutor{
 		classes.clear();
 		names.clear();
 		CFStart.saveGM.clear();
+		CFClasses.players.clear();
+		CFClasses.playerInventories.clear();
 	}
 	
 }
