@@ -1,17 +1,21 @@
 package org.github.craftfortress2;
+import java.util.ArrayList;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-public class CFClasses implements Listener{
+import org.bukkit.inventory.PlayerInventory;
+public class CFClasses {
 	static ArrayList<PlayerInventory> playerInventories = new ArrayList<PlayerInventory>();
-	static ArrayList<Player> players = new ArrayList<Player>(); // Maybe use the one in CFCE later?
+	static ArrayList<Player> players = new ArrayList<Player>(); // Use the one in CFCE later
 	@EventHandler
 	public void onFoodBarLower(FoodLevelChangeEvent event){
-			Player player = ((Player) event).getPlayer();
+			if(event.getEntity()instanceof Player){
+				Player player = (Player)event.getEntity();
 				player.setExhaustion(0);
 				player.setFoodLevel(17);
-	}
+			}
+		}
 	public static void saveInv(Player player){
 		PlayerInventory inv = player.getInventory();
 		playerInventories.add(inv);
@@ -19,8 +23,7 @@ public class CFClasses implements Listener{
 	}
 	public static void loadInv(Player player){
 		PlayerInventory inv = getInv(player);
-		ItemStack[] is = inv.getContents();
-		inv.setContents(is);
+		player.getInventory().setContents(inv.getContents());
 	}
 	public static PlayerInventory getInv(Player player){
 		int index = players.lastIndexOf(player);
