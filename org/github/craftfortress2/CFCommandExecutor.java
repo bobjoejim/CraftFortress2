@@ -15,7 +15,7 @@ public class CFCommandExecutor implements CommandExecutor {
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		Player player = null;
+			Player player = null;
 			if (sender instanceof Player) {
 				player = (Player) sender;
 			}
@@ -55,20 +55,16 @@ public class CFCommandExecutor implements CommandExecutor {
 				if (sender.hasPermission("cf.join")) {
 					if (args.length > 1 && args.length < 3) {
 						if (args[0].equalsIgnoreCase("blu")) {
-							if (args[1].equalsIgnoreCase("scout") || args[1].equalsIgnoreCase("soldier") || args[1].equalsIgnoreCase("pyro") || args[1].equalsIgnoreCase("demoman")
-									|| args[1].equalsIgnoreCase("heavy") || args[1].equalsIgnoreCase("engineer") || args[1].equalsIgnoreCase("sniper")
-									|| args[1].equalsIgnoreCase("medic") || args[1].equalsIgnoreCase("spy")) {
+							if (checkTeams(args[1])) {
 								saveInfo(sender, "blu", args[1]);
 								return true;
 							} 
 						} else if (args[0].equalsIgnoreCase("red")) {
-							if (args[1].equalsIgnoreCase("scout") || args[1].equalsIgnoreCase("soldier") || args[1].equalsIgnoreCase("pyro") || args[1].equalsIgnoreCase("demoman")
-									|| args[1].equalsIgnoreCase("heavy") || args[1].equalsIgnoreCase("engineer") || args[1].equalsIgnoreCase("sniper")
-									|| args[1].equalsIgnoreCase("medic") || args[1].equalsIgnoreCase("spy")) {
+							if (checkTeams(args[1])) {
 								saveInfo(sender, "red", args[1]);
 								return true;
 							} 							
-					} else if (args.length > 2 ) {
+					} else if (args.length > 2) {
 						sender.sendMessage(ChatColor.RED+"Too many arguments!");
 						return false;
 					} else if (args.length < 2) {
@@ -82,9 +78,7 @@ public class CFCommandExecutor implements CommandExecutor {
 				} else if(!sender.hasPermission("cf.join")){
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
-				} else if(!args[1].equalsIgnoreCase("scout") || !args[1].equalsIgnoreCase("soldier") || !args[1].equalsIgnoreCase("pyro") || !args[1].equalsIgnoreCase("demoman")
-						|| !args[1].equalsIgnoreCase("heavy") || !args[1].equalsIgnoreCase("engineer") || !args[1].equalsIgnoreCase("sniper")
-						|| !args[1].equalsIgnoreCase("medic") || !args[1].equalsIgnoreCase("spy")) {
+				}else if (!checkTeams(args[1])) {
 					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
@@ -93,9 +87,7 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfclass")) {
 				if (sender.hasPermission("cf.class")) {
 					if (args.length > 0 && args.length < 2) {
-						if (args[0].equalsIgnoreCase("scout") || args[0].equalsIgnoreCase("soldier") || args[0].equalsIgnoreCase("pyro") || args[0].equalsIgnoreCase("demoman")
-								|| args[0].equalsIgnoreCase("heavy") || args[0].equalsIgnoreCase("engineer") || args[0].equalsIgnoreCase("sniper")
-								|| args[0].equalsIgnoreCase("medic") || args[0].equalsIgnoreCase("spy")) {
+						if (checkTeams(args[0])) {
 							changeClass(sender, args[0]);
 							return true;
 						} 
@@ -109,9 +101,7 @@ public class CFCommandExecutor implements CommandExecutor {
 				} else if(!sender.hasPermission("cf.class")){
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
 					return false;
-				}else if (!args[0].equalsIgnoreCase("scout") || !args[0].equalsIgnoreCase("soldier") || !args[0].equalsIgnoreCase("pyro") || !args[0].equalsIgnoreCase("demoman")
-						|| !args[0].equalsIgnoreCase("heavy") || !args[0].equalsIgnoreCase("engineer") || !args[0].equalsIgnoreCase("sniper")
-						|| !args[0].equalsIgnoreCase("medic") || !args[0].equalsIgnoreCase("spy")) {
+				}else if (!checkTeams(args[0])) {
 					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
@@ -156,5 +146,13 @@ public class CFCommandExecutor implements CommandExecutor {
 			return "-1";
 		}
 		return teams.get(index);
+	}
+	public static boolean checkTeams(String str) {
+		if (str.equalsIgnoreCase("scout") || str.equalsIgnoreCase("soldier") || str.equalsIgnoreCase("pyro") || str.equalsIgnoreCase("demoman")
+				|| str.equalsIgnoreCase("heavy") || str.equalsIgnoreCase("engineer") || str.equalsIgnoreCase("sniper")
+				|| str.equalsIgnoreCase("medic") || str.equalsIgnoreCase("spy")) {
+			return true;
+		}
+		return false;
 	}
 }
