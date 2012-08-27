@@ -155,4 +155,11 @@ public class CFCommandExecutor implements CommandExecutor {
 		}
 		return false;
 	}
+	public static boolean isPlaying(Player player) {
+		int index = players.lastIndexOf(player);
+		if (index == -1) {
+			return false;
+		}
+		return true;
+	}
 }
