@@ -22,10 +22,11 @@ public class CFClasses {
 		players.add(player);
 	}
 	public static void loadInv(Player player){
-		PlayerInventory inv = getInv(player);
-		player.getInventory().setContents(inv.getContents());
+		PlayerInventory inv = player.getInventory();
+		PlayerInventory savedinv = getSavedInv(player);
+		inv.setContents(savedinv.getContents());
 	}
-	public static PlayerInventory getInv(Player player){
+	public static PlayerInventory getSavedInv(Player player){
 		int index = players.lastIndexOf(player);
 		if (index == -1){
 			return null;
