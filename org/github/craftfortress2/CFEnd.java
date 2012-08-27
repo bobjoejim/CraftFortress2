@@ -26,5 +26,4 @@ public class CFEnd extends CFCommandExecutor{
 		CFClasses.players.clear();
 		CFClasses.playerInventories.clear();
 	}
-	
 }
