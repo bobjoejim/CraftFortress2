@@ -12,6 +12,7 @@ private CFCommandExecutor myExecutor;
 		getCommand("cfjoin").setExecutor(myExecutor);
 		getCommand("cfhelp").setExecutor(myExecutor);
 		getCommand("cfclass").setExecutor(myExecutor);
+		getServer().getPluginManager().registerEvents(new CFClasses(), this);
 		getLogger().info("CraftFortress2 has been enabled.");
 	}
 	public void onDisable() {
