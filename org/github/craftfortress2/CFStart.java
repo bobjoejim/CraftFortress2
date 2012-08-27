@@ -23,6 +23,7 @@ public class CFStart extends CFCommandExecutor {
 		for (int i=0;i<players.size();i++){
 			saveGM.add(players.get(i).getGameMode());
 			players.get(i).setGameMode(GameMode.ADVENTURE);
+			players.get(i).setHealth(20);
 			if (getTeam(players.get(i)).equals("blu")) {
 				if(spawn == 0){
 					players.get(i).teleport(blu1);
