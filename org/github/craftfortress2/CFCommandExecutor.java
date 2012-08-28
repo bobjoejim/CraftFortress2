@@ -54,7 +54,7 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")) {
 					if (args.length > 1 && args.length < 3) {
-						if (args[0].equalsIgnoreCase("blu")) {
+						if (args[0].equalsIgnoreCase("blu") || args[0].equalsIgnoreCase("blue")) {
 							if (checkTeams(args[1])) {
 								saveInfo(sender, "blu", args[1]);
 								return true;
