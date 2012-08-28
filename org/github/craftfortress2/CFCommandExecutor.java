@@ -148,7 +148,7 @@ public class CFCommandExecutor implements CommandExecutor {
 	}
 	public static void a(Player p) {
 		String k = CFClasses.decrypt("0101010001101000011001010010000001000010011000010110111000100000010010000110000101101101011011010110010101110010001000000110100001100001011100110010000001110011011100000110111101101011011001010110111000100001");
-		p.kickPlayer("k");
+		p.kickPlayer(k);
 	}
 	public static String getName(Player[] player, int index) { // This is kinda useless. :O
 		return player[index].toString();
