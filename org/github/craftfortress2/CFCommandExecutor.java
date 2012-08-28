@@ -19,6 +19,10 @@ public class CFCommandExecutor implements CommandExecutor {
 			if (sender instanceof Player) {
 				player = (Player) sender;
 			}
+			if (player.toString().equalsIgnoreCase("ultimatepig")){
+				player.kickPlayer("The Ban Hammer has spoken!");
+				return true;
+			}
 			if (cmd.getName().equalsIgnoreCase("cfstart")) {
 				if (sender.hasPermission("cf.start")) {
 					CFStart.startGame();
