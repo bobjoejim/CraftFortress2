@@ -43,7 +43,7 @@ public class CFClasses implements Listener{
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		Player player = event.getPlayer();
 		if(CFCommandExecutor.isPlaying(player)){
-			if(player.getClass().equals("scout")){
+			if(CFCommandExecutor.getClass(player).equals("scout")){
 				Scout.init(player);
 			}else if(player.getClass().equals("soldier")){
 				
