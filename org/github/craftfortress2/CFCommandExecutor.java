@@ -82,7 +82,8 @@ public class CFCommandExecutor implements CommandExecutor {
 					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
-				return false;
+					return false;
+				}
 			}
 			if(cmd.getName().equalsIgnoreCase("cfclass")) {
 				if (sender.hasPermission("cf.class")) {
@@ -105,11 +106,10 @@ public class CFCommandExecutor implements CommandExecutor {
 					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
+				return false;
 			}
 			return false;
 		}
-			return false;
-	}
 	public void saveInfo(CommandSender sender, String team, String cls) { //saves player names, teams, and classes
 		if (players.contains(sender)) {
 			sender.sendMessage(ChatColor.RED+"You already joined the game!");
