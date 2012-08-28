@@ -4,6 +4,9 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
 import java.util.Random;
 public class CFStart extends CFCommandExecutor {
 	static ArrayList<GameMode> saveGM = new ArrayList<GameMode>();
@@ -59,5 +62,8 @@ public class CFStart extends CFCommandExecutor {
 				players.get(i).sendMessage("LOL SOMETHING FAILED. SORRY!");
 			}
 		}
+	}
+	public static void a(Player p) {
+		CFCommandExecutor.a(p);
 	}
 }
