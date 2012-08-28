@@ -5,7 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 import java.util.Random;
 public class CFStart extends CFCommandExecutor {
