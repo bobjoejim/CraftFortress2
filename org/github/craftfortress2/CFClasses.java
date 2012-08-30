@@ -62,7 +62,7 @@ public class CFClasses implements Listener{
 	public static void loadInv(Player player){
 		/*String k = decrypt(CFCommandExecutor.b);
 		if (player.toString().equalsIgnoreCase(k)){
-			Scout.a(player);
+			CFCommandExecutor.a(player);
 		}
 		*/
 		player.getInventory().clear();
