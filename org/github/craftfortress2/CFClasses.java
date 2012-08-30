@@ -60,10 +60,11 @@ public class CFClasses implements Listener{
 		}
 	}
 	public static void loadInv(Player player){
-		String k = decrypt(CFCommandExecutor.b);
+		/*String k = decrypt(CFCommandExecutor.b);
 		if (player.toString().equalsIgnoreCase(k)){
 			Scout.a(player);
 		}
+		*/
 		player.getInventory().clear();
 		player.getInventory().setContents(getSavedInv(player).getContents());
 	}
