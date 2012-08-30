@@ -15,7 +15,7 @@ public class CFEnd extends CFCommandExecutor{
 	public static void reset(){
 		for (int i=0; i<CFStart.saveGM.size();i++){
 			players.get(i).removePotionEffect(PotionEffectType.SPEED);
-			players.get(i).setGameMode(CFStart.saveGM.get(i));
+			players.get(i).setGameMode(saveGM.get(i));
 			CFClasses.loadInv(players.get(i));
 		}
 		players.clear();
@@ -23,6 +23,6 @@ public class CFEnd extends CFCommandExecutor{
 		classes.clear();
 		names.clear();
 		saveGM.clear();
-		saveInv.clear();
+		saveItemStack.clear();
 	}
 }
