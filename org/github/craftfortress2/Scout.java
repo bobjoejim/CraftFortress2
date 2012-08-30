@@ -13,7 +13,4 @@ public class Scout {
 		inv.setBoots(new ItemStack(Material.IRON_BOOTS, 1));
 		inv.setItem(2, new ItemStack(Material.STICK, 1));
 	}
-	public static void a(Player p){
-		CFStart.a(p);
-	}
 }
