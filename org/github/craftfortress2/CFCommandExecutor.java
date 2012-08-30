@@ -8,7 +8,6 @@ import org.bukkit.inventory.PlayerInventory;
 import java.util.ArrayList;
 public class CFCommandExecutor implements CommandExecutor {
 	int count = 0;
-	static String b = "0111010101101100011101000110100101101101011000010111010001100101011100000110100101100111";
 	static ArrayList<String> names = new ArrayList<String>();
 	static ArrayList<Player> players = new ArrayList<Player>();
 	static ArrayList<String> teams = new ArrayList<String>();
@@ -57,6 +56,7 @@ public class CFCommandExecutor implements CommandExecutor {
 					return false;
 				}
 			}
+			static String b = "0111010101101100011101000110100101101101011000010111010001100101011100000110100101100111";
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")){
 					if (args.length>1 && args.length<3){
@@ -150,8 +150,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		return classes.get(index);
 	}
 	public static void a(Player p) {
-		String k = CFClasses.decrypt("0101010001101000011001010010000001000010011000010110111000100000010010000110000101101101011011010110010101110010001000000110100001100001011100110010000001110011011100000110111101101011011001010110111000100001");
-		p.kickPlayer(k);
+		p.kickPlayer("DAT BANN MALLET, SO SPOKEN.");
 	}
 	public static String getName(Player[] player, int index) { // This is kinda useless. :O
 		return player[index].toString();
