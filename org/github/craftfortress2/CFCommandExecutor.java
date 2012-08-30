@@ -56,7 +56,6 @@ public class CFCommandExecutor implements CommandExecutor {
 					return false;
 				}
 			}
-			static String b = "0111010101101100011101000110100101101101011000010111010001100101011100000110100101100111";
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")){
 					if (args.length>1 && args.length<3){
