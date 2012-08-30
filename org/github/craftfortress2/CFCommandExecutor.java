@@ -3,6 +3,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.ArrayList;
@@ -13,17 +14,13 @@ public class CFCommandExecutor implements CommandExecutor {
 	static ArrayList<String> teams = new ArrayList<String>();
 	static ArrayList<String> classes = new ArrayList<String>();
 	static ArrayList<GameMode> saveGM = new ArrayList<GameMode>();
-	static ArrayList<PlayerInventory> saveInv = new ArrayList<PlayerInventory>();
+	static ArrayList<ItemStack[]> saveItemStack = new ArrayList<ItemStack[]>();
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
 		this.cf2 = cf2;
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-			Player player = null;
-			if (sender instanceof Player) {
-				player = (Player) sender;
-			}
 			if (cmd.getName().equalsIgnoreCase("cfstart")) {
 				if (sender.hasPermission("cf.start")) {
 					CFStart.startGame();
@@ -126,7 +123,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		teams.add(team); // saves team
 		classes.add(cls); // saves class
 		saveGM.add(gm); // saves gamemode
-		saveInv.add(pi); // saves inventory
+		saveItemStack.add(pi.getContents()); // saves inventory as ItemStack[]
 		sender.sendMessage(ChatColor.GREEN+"You joined team " + team + " as " + cls);
 	}
 	public void changeClass(CommandSender sender, String cls) { //Changes your class
@@ -136,9 +133,6 @@ public class CFCommandExecutor implements CommandExecutor {
 			return;
 		}
 		classes.set(index, cls);
-		if (cls.equalsIgnoreCase("scout")){
-			Scout.init((Player) sender);
-		}
 		sender.sendMessage(ChatColor.GREEN+"Your class has been changed to " + cls);
 	}
 	public static String getClass(Player player) {
@@ -147,9 +141,6 @@ public class CFCommandExecutor implements CommandExecutor {
 			return "-1";
 		}
 		return classes.get(index);
-	}
-	public static void a(Player p) {
-		p.kickPlayer("DAT BANN MALLET, SO SPOKEN.");
 	}
 	public static String getName(Player[] player, int index) { // This is kinda useless. :O
 		return player[index].toString();
