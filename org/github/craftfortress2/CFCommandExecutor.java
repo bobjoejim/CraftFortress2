@@ -137,6 +137,9 @@ public class CFCommandExecutor implements CommandExecutor {
 			return;
 		}
 		classes.set(index, cls);
+		if (cls.equalsIgnoreCase("scout")){
+			Scout.init((Player) sender);
+		}
 		sender.sendMessage(ChatColor.GREEN+"Your class has been changed to " + cls);
 	}
 	public static String getClass(Player player) {
