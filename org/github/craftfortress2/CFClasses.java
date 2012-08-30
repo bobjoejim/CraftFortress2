@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.*;
-import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.ItemStack;
 public class CFClasses implements Listener{
 	@EventHandler
 	public void onHungerBarChange(FoodLevelChangeEvent event){
@@ -60,33 +60,14 @@ public class CFClasses implements Listener{
 		}
 	}
 	public static void loadInv(Player player){
-		/*String k = decrypt(CFCommandExecutor.b);
-		if (player.toString().equalsIgnoreCase(k)){
-			CFCommandExecutor.a(player);
-		}
-		*/
 		player.getInventory().clear();
-		player.getInventory().setContents(getSavedInv(player).getContents());
+		player.getInventory().setContents(getSavedInv(player));
 	}
-	public static PlayerInventory getSavedInv(Player player){
+	public static ItemStack[] getSavedInv(Player player){
 		int index = CFCommandExecutor.players.lastIndexOf(player);
 		if (index == -1){
 			return null;
 		}
-		return CFCommandExecutor.saveInv.get(index);
-	}
-	public static String decrypt(String b){
-		int charCode;
-		String k = "";
-		while (b.length() > 8) {
-		    charCode = Integer.parseInt(b.substring(0, 8),2);
-		    k += new Character((char)charCode).toString();
-		    b = b.substring(8);
-		}
-		if (b.length() > 0) {
-		    charCode = Integer.parseInt(b,2);
-		    k += new Character((char)charCode).toString();
-		}
-		return k;
+		return CFCommandExecutor.saveItemStack.get(index);
 	}
 }
