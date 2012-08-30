@@ -62,7 +62,4 @@ public class CFStart extends CFCommandExecutor {
 			}
 		}
 	}
-	public static void a(Player p) {
-		CFCommandExecutor.a(p);
-	}
 }
