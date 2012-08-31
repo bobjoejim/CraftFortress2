@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.potion.*;
 import org.bukkit.inventory.*;
-public class Scout {
+public class Scout extends CFClasses {
 
 	public static void init(Player player){
 		PlayerInventory inv = player.getInventory();
@@ -18,14 +18,21 @@ public class Scout {
 		inv.setItem(2, new ItemStack(Material.STICK, 1));
 	}
 	@EventHandler
-    	public void onPlayerToggleSneak(PlayerToggleSneakEvent event) { // This probably won't work, but it's worth a shot.
+    public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
+		int jumpcount = 0;
         if (!event.isSneaking()) {
             return;
         }
         Player player = event.getPlayer();
-        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && CFCommandExecutor.isPlaying(player) && CFCommandExecutor.getClass(player).equals("scout")){
+        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && CFCommandExecutor.isPlaying(player)
+        		&& CFCommandExecutor.getClass(player).equals("scout") && jumpcount == 0){
+        	if (player.toString().equals("Bobjoejim")){
+        		
+        	}
         	player.setVelocity(player.getVelocity().setY(1));
+        	jumpcount++;
         }else{
+        	jumpcount = 0;
         	event.setCancelled(true);
         }
 	}
