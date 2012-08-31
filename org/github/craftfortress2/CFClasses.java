@@ -21,9 +21,9 @@ public class CFClasses implements Listener{
 	}
 	@EventHandler
 	public void pvp(EntityDamageByEntityEvent event){
-		Player player = (Player) event.getDamager();
-		Player pyr = (Player) event.getEntity();
-			if(CFCommandExecutor.getTeam(player) == CFCommandExecutor.getTeam(pyr)){
+		Entity damager = event.getDamager();
+		Entity player = event.getEntity();
+			if(CFCommandExecutor.getTeam((Player) damager) == CFCommandExecutor.getTeam((Player) player)){
 				event.setCancelled(true);
 			}
 		}
@@ -40,24 +40,35 @@ public class CFClasses implements Listener{
 		if(CFCommandExecutor.isPlaying(player)){
 			if(CFCommandExecutor.getClass(player).equals("scout")){
 				Scout.init(player);
-			}else if(player.getClass().equals("soldier")){
+				return;
+			}else if(CFCommandExecutor.getClass(player).equals("soldier")){
 
-			}else if(player.getClass().equals("heavy")){
+			}else if(CFCommandExecutor.getClass(player).equals("heavy")){
 
-			}else if(player.getClass().equals("demoman")){
+			}else if(CFCommandExecutor.getClass(player).equals("demoman")){
 
-			}else if(player.getClass().equals("medic")){
+			}else if(CFCommandExecutor.getClass(player).equals("medic")){
 
-			}else if(player.getClass().equals("pyro")){
+			}else if(CFCommandExecutor.getClass(player).equals("pyro")){
 
-			}else if(player.getClass().equals("sniper")){
+			}else if(CFCommandExecutor.getClass(player).equals("sniper")){
 
-			}else if(player.getClass().equals("engineer")){
+			}else if(CFCommandExecutor.getClass(player).equals("engineer")){
 
-			}else if(player.getClass().equals("spy")){
+			}else if(CFCommandExecutor.getClass(player).equals("spy")){
 
 			}
 		}
+	}
+	@EventHandler
+    	public void onPlayerToggleSneak(PlayerToggleSneakEvent event) { // This probably won't work, but it's worth a shot.
+        if (!event.isSneaking()) {
+            return;
+        }
+        Player player = event.getPlayer();
+        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && CFCommandExecutor.isPlaying(player) && CFCommandExecutor.getClass(player).equals("scout")){
+        	player.setVelocity(player.getVelocity().setY(1));
+        }
 	}
 	public static void loadInv(Player player){
 		player.getInventory().clear();
