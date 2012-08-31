@@ -1,5 +1,8 @@
 package org.github.craftfortress2;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
@@ -38,6 +41,10 @@ public class CFClasses implements Listener{
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		Player player = event.getPlayer();
+		Server server = Bukkit.getServer();
+		if(player.equals(CFCommandExecutor.changeTeam(CFCommandExecutor.team))){
+			player.teleport(new Location(server.getWorld("ctf_2fort"), 0, 0, 0));
+		}
 		if(CFCommandExecutor.isPlaying(player)){
 			if(CFCommandExecutor.getClass(player).equals("scout")){
 				Scout.init(player);
