@@ -13,10 +13,10 @@ public class CFStart extends CFCommandExecutor {
 		Server server = Bukkit.getServer();
 		server.broadcastMessage("Craft Fortress 2 is starting!");
 		World ctf2fort = server.getWorld("ctf_2fort");
-		Location blu1 = new Location(ctf2fort, 78.52184, 70, 209.57359);
-		Location blu2 = new Location(ctf2fort, 31.80711, 70, 201.99570);
-		Location red1 = new Location(ctf2fort, 37.71015, 70, 256.51407);
-		Location red2 = new Location(ctf2fort, 84.70609, 70, 264.01575);
+		Location blu1 = new Location(ctf2fort, 78, 70, 209);
+		Location blu2 = new Location(ctf2fort, 31, 70, 201);
+		Location red1 = new Location(ctf2fort, 37, 70, 256);
+		Location red2 = new Location(ctf2fort, 84, 70, 264);
 		Random rand = new Random();
 		int spawn = rand.nextInt(2);
 		for (int i=0;i<players.size();i++){
