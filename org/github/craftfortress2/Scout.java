@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.potion.*;
 import org.bukkit.inventory.*;
-public class Scout {
+public class Scout extends CFClasses {
 
 	public static void init(Player player){
 		PlayerInventory inv = player.getInventory();
@@ -18,7 +18,7 @@ public class Scout {
 		inv.setItem(2, new ItemStack(Material.STICK, 1));
 	}
 	@EventHandler
-    public void onPlayerToggleSneak(PlayerToggleSneakEvent event) { // This probably won't work, but it's worth a shot.
+    	public void onPlayerToggleSneak(PlayerToggleSneakEvent event) { // This probably won't work, but it's worth a shot.
         if (!event.isSneaking()) {
             return;
         }
