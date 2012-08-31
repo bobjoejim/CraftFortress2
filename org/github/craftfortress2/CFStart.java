@@ -4,9 +4,6 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
 import java.util.Random;
 public class CFStart extends CFCommandExecutor {
 	public CFStart(CraftFortress2 cf2) {
@@ -25,6 +22,9 @@ public class CFStart extends CFCommandExecutor {
 		for (int i=0;i<players.size();i++){
 			players.get(i).setGameMode(GameMode.ADVENTURE);
 			players.get(i).setHealth(20);
+			if (players.get(i).equals(changeTeam(CFCommandExecutor.team))){
+				players.get(i).teleport(new Location(ctf2fort, 0, 0, 0));
+			}
 			if (getTeam(players.get(i)).equals("blu")) {
 				if(spawn == 0){
 					players.get(i).teleport(blu1);
@@ -38,27 +38,7 @@ public class CFStart extends CFCommandExecutor {
 					players.get(i).teleport(red2);
 				}
 			}
-			if(getClass(players.get(i)).equals("scout")){
-				Scout.init(players.get(i));
-			}else if(getClass(players.get(i)).equals("soldier")){
-
-			}else if(getClass(players.get(i)).equals("demoman")){
-
-			}else if(getClass(players.get(i)).equals("heavy")){
-
-			}else if(getClass(players.get(i)).equals("medic")){
-
-			}else if(getClass(players.get(i)).equals("engineer")){
-
-			}else if(getClass(players.get(i)).equals("spy")){
-
-			}else if(getClass(players.get(i)).equals("pyro")){
-
-			}else if(getClass(players.get(i)).equals("sniper")){
-
-			}else{
-				players.get(i).sendMessage("LOL SOMETHING FAILED. SORRY!");
-			}
+			initClasses(players.get(i));
 		}
 	}
 }
