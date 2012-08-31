@@ -1,5 +1,6 @@
-package org.github.craftfortress2;
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.entity.*;
