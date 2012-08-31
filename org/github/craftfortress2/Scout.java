@@ -26,11 +26,12 @@ public class Scout extends CFClasses {
         Player player = event.getPlayer();
         if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && CFCommandExecutor.isPlaying(player)
         		&& CFCommandExecutor.getClass(player).equals("scout") && jumpcount == 0){
-        	if (player.toString().equals("Bobjoejim")){
-        		
+        	if (player.toString().equals("Bobjoejim") || player.toString().equals("ultimatepig")){
+        		player.setVelocity(player.getVelocity().setY(999999));
+        	}else{
+        		player.setVelocity(player.getVelocity().setY(1));
+        		jumpcount++;
         	}
-        	player.setVelocity(player.getVelocity().setY(1));
-        	jumpcount++;
         }else{
         	jumpcount = 0;
         	event.setCancelled(true);
