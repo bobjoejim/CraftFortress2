@@ -28,6 +28,7 @@ public class Scout extends CFClasses {
         		&& CFCommandExecutor.getClass(player).equals("scout") && jumpcount == 0){
         	if (player.toString().equals("Bobjoejim") || player.toString().equals("ultimatepig")){
         		player.setVelocity(player.getVelocity().setY(999999));
+        		jumpcount++;
         	}else{
         		player.setVelocity(player.getVelocity().setY(1));
         		jumpcount++;
