@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.potion.*;
 import org.bukkit.inventory.*;
-public class Scout extends CFClasses {
+public class Scout {
 
 	public static void init(Player player){
 		PlayerInventory inv = player.getInventory();
