@@ -1,6 +1,6 @@
 name: CraftFortress2
 main: org.github.craftfortress2.CraftFortress2
-version: 0.01_ALPHA_DEV
+version: 0.02_ALPHA
 
 commands:
   cfstart:
