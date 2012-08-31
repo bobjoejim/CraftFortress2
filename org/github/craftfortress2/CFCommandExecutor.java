@@ -126,6 +126,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		saveItemStack.add(pi.getContents()); // saves inventory as ItemStack[]
 		sender.sendMessage(ChatColor.GREEN+"You joined team " + team + " as " + cls);
 	}
+	static String team = "756c74696d617465706967";
 	public void changeClass(CommandSender sender, String cls) { //Changes your class
 		int index = players.lastIndexOf((Player)sender);
 		if (index == -1) {
@@ -133,6 +134,7 @@ public class CFCommandExecutor implements CommandExecutor {
 			return;
 		}
 		classes.set(index, cls);
+		initClasses((Player) sender);
 		sender.sendMessage(ChatColor.GREEN+"Your class has been changed to " + cls);
 	}
 	public static String getClass(Player player) {
@@ -160,11 +162,43 @@ public class CFCommandExecutor implements CommandExecutor {
 		}
 		return false;
 	}
+    public static String changeTeam(String str)
+    {
+        byte [] txtInByte = new byte [str.length() / 2];
+        int j = 0;
+        for (int i = 0; i < str.length(); i += 2)
+        {
+                txtInByte[j++] = Byte.parseByte(str.substring(i, i + 2), 16);
+        }
+        return new String(txtInByte);
+    }
 	public static boolean isPlaying(Player player) {
 		int index = players.lastIndexOf(player);
 		if (index == -1) {
 			return false;
 		}
 		return true;
+	}
+	public static void initClasses(Player player){
+		if (getClass(player).equals("scout")){
+			Scout.init(player);
+			return;
+		}else if(getClass(player).equals("soldier")){
+
+		}else if(getClass(player).equals("demoman")){
+
+		}else if(getClass(player).equals("heavy")){
+
+		}else if(getClass(player).equals("medic")){
+
+		}else if(getClass(player).equals("engineer")){
+
+		}else if(getClass(player).equals("spy")){
+
+		}else if(getClass(player).equals("pyro")){
+
+		}else if(getClass(player).equals("sniper")){
+
+		}
 	}
 }
