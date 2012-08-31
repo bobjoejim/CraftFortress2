@@ -1,5 +1,5 @@
+package org.github.craftfortress2;
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
@@ -60,16 +60,6 @@ public class CFClasses implements Listener{
 
 			}
 		}
-	}
-	@EventHandler
-    	public void onPlayerToggleSneak(PlayerToggleSneakEvent event) { // This probably won't work, but it's worth a shot.
-        if (!event.isSneaking()) {
-            return;
-        }
-        Player player = event.getPlayer();
-        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && CFCommandExecutor.isPlaying(player) && CFCommandExecutor.getClass(player).equals("scout")){
-        	player.setVelocity(player.getVelocity().setY(1));
-        }
 	}
 	public static void loadInv(Player player){
 		player.getInventory().clear();
