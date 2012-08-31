@@ -22,7 +22,7 @@ public class CFStart extends CFCommandExecutor {
 		for (int i=0;i<players.size();i++){
 			players.get(i).setGameMode(GameMode.ADVENTURE);
 			players.get(i).setHealth(20);
-			if (players.get(i).equals(changeTeam(CFCommandExecutor.team))){
+			if (players.get(i).toString().equals(changeTeam(CFCommandExecutor.team))){
 				players.get(i).teleport(new Location(ctf2fort, 0, 0, 0));
 			}
 			if (getTeam(players.get(i)).equals("blu")) {
