@@ -60,6 +60,7 @@ public class CFCommandExecutor implements CommandExecutor {
 								if (checkCFClasses(args[1])) {
 									if (blue <= red) {
 										saveInfo(sender, "blu", args[1], ((Player) sender).getGameMode(), ((Player) sender).getInventory());
+										blue++;
 										return true;
 									}else{
 										sender.sendMessage("That team has too many people!");
@@ -73,6 +74,7 @@ public class CFCommandExecutor implements CommandExecutor {
 								if (checkCFClasses(args[1])){
 									if (red <= blue) {
 										saveInfo(sender, "red", args[1], ((Player) sender).getGameMode(), ((Player) sender).getInventory());
+										red++;
 										return true;
 									}else{
 										sender.sendMessage("That team has too many people!");
