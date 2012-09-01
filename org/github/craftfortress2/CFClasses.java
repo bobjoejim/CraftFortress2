@@ -7,12 +7,22 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 public class CFClasses implements Listener{
 	@EventHandler
 	public void onHungerBarChange(FoodLevelChangeEvent event){
 		event.setCancelled(true);
+	}
+	@EventHandler
+	public void onOpenInventory(InventoryOpenEvent event){
+		Player player = (Player) event.getPlayer();
+		if(CFCommandExecutor.isPlaying(player)){
+			event.setCancelled(true);
+		}else{
+			event.setCancelled(false);
+		}
 	}
 	@EventHandler
 	public void onPickupItem(PlayerPickupItemEvent event){
