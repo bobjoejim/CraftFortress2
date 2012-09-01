@@ -2,7 +2,7 @@ package org.github.craftfortress2;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.potion.PotionEffectType;
-public class CFEnd extends CFCommandExecutor{
+public class CFEnd extends CFCommandExecutor {
 	public CFEnd(CraftFortress2 cf2) {
 		super(cf2);
 	}
@@ -25,5 +25,7 @@ public class CFEnd extends CFCommandExecutor{
 		saveGM.clear();
 		saveInv.clear();
 		CFStart.gameHasStarted = false;
+		blue = 0;
+		red = 0;
 	}
 }
