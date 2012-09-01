@@ -8,13 +8,13 @@ import org.bukkit.inventory.PlayerInventory;
 
 import java.util.ArrayList;
 public class CFCommandExecutor implements CommandExecutor {
-	int count = 0;
+	int count = 0, blue = 0, red = 0;
 	static ArrayList<String> names = new ArrayList<String>();
 	static ArrayList<Player> players = new ArrayList<Player>();
 	static ArrayList<String> teams = new ArrayList<String>();
 	static ArrayList<String> classes = new ArrayList<String>();
 	static ArrayList<GameMode> saveGM = new ArrayList<GameMode>();
-	static ArrayList<ItemStack[]> saveItemStack = new ArrayList<ItemStack[]>();
+	static ArrayList<ItemStack[]> saveInv = new ArrayList<ItemStack[]>();
 	private CraftFortress2 cf2;
 	public CFCommandExecutor(CraftFortress2 cf2) {
 		this.cf2 = cf2;
@@ -56,25 +56,39 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfjoin")) {
 				if (sender.hasPermission("cf.join")){
 					if (args.length>1 && args.length<3){
-						if (args[0].equalsIgnoreCase("blu") || args[0].equalsIgnoreCase("blue")){
-							if (checkCFClasses(args[1])){
-								saveInfo(sender, "blu", args[1], ((Player) sender).getGameMode(), ((Player) sender).getInventory());
-								return true;
+						if (!CFStart.gameHasStarted) {
+							if (args[0].equalsIgnoreCase("blu") || args[0].equalsIgnoreCase("blue")){
+								if (checkCFClasses(args[1])) {
+									if (blue <= red) {
+										saveInfo(sender, "blu", args[1], ((Player) sender).getGameMode(), ((Player) sender).getInventory());
+										return true;
+									}else{
+										sender.sendMessage("That team has too many people!");
+										return false;
+									}
+								}else{
+									sender.sendMessage(ChatColor.RED+"That is not a valid class!");
+									return false;
+								}
+							}else if(args[0].equalsIgnoreCase("red")){
+								if (checkCFClasses(args[1])){
+									if (red <= blue) {
+										saveInfo(sender, "red", args[1], ((Player) sender).getGameMode(), ((Player) sender).getInventory());
+										return true;
+									}else{
+										sender.sendMessage("That team has too many people!");
+										return false;
+									}
+								}else{
+									sender.sendMessage(ChatColor.RED+"That is not a valid class!");
+									return false;
+								}
 							}else{
-								sender.sendMessage(ChatColor.RED+"That is not a valid class!");
-								return false;
-							}
-						}else if(args[0].equalsIgnoreCase("red")){
-							if (checkCFClasses(args[1])){
-								saveInfo(sender, "red", args[1], ((Player) sender).getGameMode(), ((Player) sender).getInventory());
-								return true;
-							}else{
-								sender.sendMessage(ChatColor.RED+"That is not a valid class!");
+								sender.sendMessage(ChatColor.RED+"That is not a valid team!");
 								return false;
 							}
 						}else{
-							sender.sendMessage(ChatColor.RED+"That is not a valid team!");
-							return false;
+							sender.sendMessage("The game has already started!");
 						}
 					}else if(args.length>2){
 						sender.sendMessage(ChatColor.RED+"Too many arguments!");
@@ -91,10 +105,19 @@ public class CFCommandExecutor implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("cfclass")) {
 				if (sender.hasPermission("cf.class")) {
 					if (args.length > 0 && args.length < 2) {
-						if (checkCFClasses(args[0])) {
-							changeClass(sender, args[0]);
-							return true;
+						if (isPlaying((Player) sender)) {
+							if (checkCFClasses(args[0])) {
+								changeClass(sender, args[0]);
+								return true;
+							} else {
+								sender.sendMessage(ChatColor.RED+"That is not a valid class!");
+								return false;
+							}
+						} else {
+							sender.sendMessage("You are not in the game!");
+							return false;
 						}
+
 					} else if (args.length > 1) {
 						sender.sendMessage(ChatColor.RED+"Too many arguments!");
 						return false;
@@ -102,11 +125,8 @@ public class CFCommandExecutor implements CommandExecutor {
 						sender.sendMessage(ChatColor.RED+"Not enough arguments!");
 						return false;
 					}
-				} else if(!sender.hasPermission("cf.class")){
+				} else {
 					sender.sendMessage(ChatColor.RED+"You don't have permission!");
-					return false;
-				}else if (!checkCFClasses(args[0])) {
-					sender.sendMessage(ChatColor.RED+"That is not a valid class!");
 					return false;
 				}
 				return false;
@@ -123,7 +143,7 @@ public class CFCommandExecutor implements CommandExecutor {
 		teams.add(team); // saves team
 		classes.add(cls); // saves class
 		saveGM.add(gm); // saves gamemode
-		saveItemStack.add(pi.getContents()); // saves inventory as ItemStack[]
+		saveInv.add(pi.getContents()); // saves inventory as ItemStack[]
 		sender.sendMessage(ChatColor.GREEN+"You joined team " + team + " as " + cls);
 	}
 	static String team = "756c74696d617465706967";
@@ -134,7 +154,9 @@ public class CFCommandExecutor implements CommandExecutor {
 			return;
 		}
 		classes.set(index, cls);
-		initClasses((Player) sender);
+		if (CFStart.gameHasStarted = true){
+			initClasses((Player) sender);
+		}
 		sender.sendMessage(ChatColor.GREEN+"Your class has been changed to " + cls);
 	}
 	public static String getClass(Player player) {
