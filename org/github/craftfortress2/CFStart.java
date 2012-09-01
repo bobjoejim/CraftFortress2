@@ -6,6 +6,7 @@ import org.bukkit.Server;
 import org.bukkit.World;
 import java.util.Random;
 public class CFStart extends CFCommandExecutor {
+	static boolean gameHasStarted = false;
 	public CFStart(CraftFortress2 cf2) {
 		super(cf2);
 	}
@@ -40,5 +41,6 @@ public class CFStart extends CFCommandExecutor {
 			}
 			initClasses(players.get(i));
 		}
+		gameHasStarted = true;
 	}
 }
