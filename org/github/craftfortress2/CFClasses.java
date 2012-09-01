@@ -46,26 +46,7 @@ public class CFClasses implements Listener{
 			player.teleport(new Location(server.getWorld("ctf_2fort"), 0, 0, 0));
 		}
 		if(CFCommandExecutor.isPlaying(player)){
-			if(CFCommandExecutor.getClass(player).equals("scout")){
-				Scout.init(player);
-				return;
-			}else if(CFCommandExecutor.getClass(player).equals("soldier")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("heavy")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("demoman")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("medic")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("pyro")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("sniper")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("engineer")){
-
-			}else if(CFCommandExecutor.getClass(player).equals("spy")){
-
-			}
+			CFCommandExecutor.initClasses(player);
 		}
 	}
 	public static void loadInv(Player player){
@@ -77,6 +58,6 @@ public class CFClasses implements Listener{
 		if (index == -1){
 			return null;
 		}
-		return CFCommandExecutor.saveItemStack.get(index);
+		return CFCommandExecutor.saveInv.get(index);
 	}
 }
