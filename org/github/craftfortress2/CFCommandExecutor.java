@@ -5,10 +5,9 @@ import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-
 import java.util.ArrayList;
 public class CFCommandExecutor implements CommandExecutor {
-	int count = 0, blue = 0, red = 0;
+	static int blue = 0, red = 0;
 	static ArrayList<String> names = new ArrayList<String>();
 	static ArrayList<Player> players = new ArrayList<Player>();
 	static ArrayList<String> teams = new ArrayList<String>();
