@@ -23,6 +23,7 @@ public class CFEnd extends CFCommandExecutor{
 		classes.clear();
 		names.clear();
 		saveGM.clear();
-		saveItemStack.clear();
+		saveInv.clear();
+		CFStart.gameHasStarted = false;
 	}
 }
